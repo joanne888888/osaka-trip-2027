@@ -314,7 +314,155 @@
     padding: 14px;
   }
 }
+/* ===== 每日行程時間軸 ===== */
+.itinerary-section {
+  margin-top: 35px;
+  padding: 24px;
+  background: #fff;
+  border: 3px solid #3E3A39;
+  border-radius: 28px;
+}
 
+.day-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.day-badge {
+  background: #F2A497;
+  border: 2px solid #3E3A39;
+  border-radius: 22px;
+  padding: 8px 18px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.day-date {
+  background: #F6D27A;
+  border: 2px solid #3E3A39;
+  border-radius: 15px;
+  padding: 8px 16px;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 12px;
+  padding-left: 28px;
+  border-left: 3px solid #3E3A39;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 0;
+  border-bottom: 2px dotted #F2A497;
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -39px;
+  top: 25px;
+  width: 17px;
+  height: 17px;
+  background: #F2A497;
+  border: 3px solid #3E3A39;
+  border-radius: 50%;
+}
+
+.timeline-time {
+  flex-shrink: 0;
+  background: #F6D27A;
+  border: 2px solid #3E3A39;
+  border-radius: 18px;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-content h3 {
+  margin: 0 0 6px;
+  font-size: 19px;
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.timeline-illustration {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #FFF1D5;
+  border: 2px solid #3E3A39;
+  border-radius: 20px;
+  color: #3E3A39;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.map-link:hover {
+  background: #F6D27A;
+}
+
+@media (max-width: 600px) {
+  .itinerary-section {
+    padding: 15px;
+  }
+
+  .day-heading {
+    flex-wrap: wrap;
+  }
+
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-item {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .timeline-item::before {
+    left: -31px;
+  }
+
+  .timeline-time {
+    font-size: 15px;
+    padding: 6px 9px;
+  }
+
+  .timeline-content h3 {
+    font-size: 17px;
+  }
+
+  .timeline-illustration {
+    width: 65px;
+    height: 65px;
+  }
+}
   </style>
 </head>
 
