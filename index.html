@@ -536,24 +536,19 @@
 
   </main>
 
+<script>
 // ===== 大阪旅行出發倒數 =====
-
 function updateCountdown() {
-
   // 設定出發日期：2027年1月7日
   const targetDate = new Date(2027, 0, 7);
 
   // 取得今天日期
   const today = new Date();
-
   today.setHours(0, 0, 0, 0);
 
   // 計算相差天數
   const difference = targetDate - today;
-
-  const days = Math.ceil(
-    difference / (1000 * 60 * 60 * 24)
-  );
+  const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
 
   // 顯示倒數
   const display = document.getElementById("daysLeft");
@@ -567,8 +562,8 @@ function updateCountdown() {
   }
 }
 
-// 網頁開啟時自動執行
 updateCountdown();
+</script>
 
 </body>
 </html>
