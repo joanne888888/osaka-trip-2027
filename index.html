@@ -131,6 +131,76 @@
       border-radius: 30px;
       font-size: 18px;
     }
+    
+/* ===== 首頁繪本主視覺 ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 35px 18px 30px;
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  background-color: #FFF5E9;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(34px, 7vw, 58px);
+  margin: 12px 0;
+  color: var(--ink);
+}
+
+.hero p {
+  position: relative;
+  z-index: 2;
+  font-size: 19px;
+  margin: 8px 0 18px;
+}
+
+.hero .date {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background-color: var(--yellow);
+  border: 2px solid var(--ink);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 17px;
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.hero-illustration .cloud {
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-illustration .deer {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-illustration .cloud,
+  .hero-illustration .deer {
+    animation: none;
+  }
+}
+
   </style>
 </head>
 
@@ -153,11 +223,109 @@
   <main class="container" id="top">
 
 
-    <section class="hero">
-      <h1>✈️ 來企大阪玩！</h1>
-      <p>大阪・京都・奈良 六天五夜</p>
-      <div class="date">2027.01.07 — 2027.01.12</div>
-    </section>
+   
+<section class="hero">
+
+  <svg class="hero-illustration"
+       viewBox="0 0 700 260"
+       xmlns="http://www.w3.org/2000/svg">
+
+    <!-- 太陽 -->
+    <circle cx="350" cy="95" r="65"
+            fill="#F6D27A"/>
+
+    <!-- 雲朵 -->
+    <g class="cloud" fill="#FFFFFF"
+       stroke="#3E3A39" stroke-width="3">
+      <path d="M45 90 Q20 90 25 70
+      Q30 45 55 55 Q65 25 95 42
+      Q120 35 125 65 Q150 70 140 90 Z"/>
+      <path d="M550 75 Q530 75 535 55
+      Q545 30 570 42 Q585 15 610 35
+      Q635 30 640 60 Q665 65 655 80 Z"/>
+    </g>
+
+    <!-- 大阪城 -->
+    <g stroke="#3E3A39" stroke-width="3"
+       stroke-linejoin="round">
+      <rect x="75" y="150" width="105" height="65"
+            fill="#F2A497"/>
+      <path d="M65 150 L127 115 L190 150 Z"
+            fill="#B9DAA5"/>
+      <path d="M90 120 L127 85 L165 120 Z"
+            fill="#B9DAA5"/>
+      <path d="M110 85 L127 60 L145 85 Z"
+            fill="#F6D27A"/>
+      <path d="M65 150 L190 150"
+            fill="none"/>
+      <rect x="115" y="170" width="25" height="45"
+            fill="#FFFCF6"/>
+      <rect x="88" y="165" width="15" height="18"
+            fill="#A8D3E6"/>
+      <rect x="150" y="165" width="15" height="18"
+            fill="#A8D3E6"/>
+    </g>
+
+    <!-- 通天閣 -->
+    <g stroke="#3E3A39" stroke-width="3"
+       stroke-linejoin="round">
+      <path d="M350 215 L375 85 L400 215 Z"
+            fill="#F6D27A"/>
+      <rect x="364" y="85" width="22" height="25"
+            fill="#A8D3E6"/>
+      <path d="M368 85 L375 55 L382 85"
+            fill="#F2A497"/>
+      <path d="M359 130 L391 130 M355 165 L395 165"
+            fill="none"/>
+      <path d="M350 215 L400 215"
+            fill="none"/>
+    </g>
+
+    <!-- 小鹿 -->
+    <g class="deer" stroke="#3E3A39"
+       stroke-width="3" stroke-linejoin="round">
+      <ellipse cx="555" cy="185" rx="38" ry="27"
+               fill="#D9A66C"/>
+      <circle cx="590" cy="150" r="19"
+              fill="#D9A66C"/>
+      <path d="M580 133 L570 108 L585 122
+               L590 103 L596 130"
+            fill="none" stroke-linecap="round"/>
+      <path d="M540 207 L535 235 M570 207 L575 235"
+            fill="none" stroke-linecap="round"/>
+      <circle cx="596" cy="147" r="3"
+              fill="#3E3A39"/>
+    </g>
+
+    <!-- 草地 -->
+    <path d="M0 230 Q100 205 200 230
+             Q300 205 400 230
+             Q550 200 700 225 L700 260 L0 260 Z"
+          fill="#B9DAA5"
+          stroke="#3E3A39" stroke-width="3"/>
+
+    <!-- 櫻花 -->
+    <g fill="#F2A497">
+      <circle cx="210" cy="210" r="7"/>
+      <circle cx="225" cy="205" r="7"/>
+      <circle cx="218" cy="220" r="7"/>
+      <circle cx="500" cy="220" r="7"/>
+      <circle cx="515" cy="215" r="7"/>
+      <circle cx="508" cy="230" r="7"/>
+    </g>
+
+  </svg>
+
+  <h1>✈️ 來企大阪玩！</h1>
+
+  <p>大阪・京都・奈良 六天五夜</p>
+
+  <div class="date">
+    2027.01.07 — 2027.01.12
+  </div>
+
+</section>
+
 
   </main>
 
