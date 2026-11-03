@@ -201,6 +201,39 @@
   }
 }
 
+/* ===== 出發倒數計時 ===== */
+.countdown {
+  margin: 25px auto 5px;
+  padding: 18px;
+  max-width: 420px;
+  background-color: #FFFFFF;
+  border: 3px solid var(--ink);
+  border-radius: 25px;
+  text-align: center;
+}
+
+.countdown-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.countdown-number {
+  color: #F2A497;
+  font-size: 55px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.countdown-number span {
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.countdown-date {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
   </style>
 </head>
 
@@ -324,10 +357,61 @@
     2027.01.07 — 2027.01.12
   </div>
 
+<div class="countdown">
+
+  <div class="countdown-title">
+    🌸 距離大阪旅行還有 🌸
+  </div>
+
+  <div class="countdown-number">
+    <strong id="daysLeft">計算中</strong>
+    <span>天</span>
+  </div>
+
+  <div class="countdown-date">
+    ✈️ 2027.01.07 出發！
+  </div>
+
+</div>
+
 </section>
 
 
   </main>
+
+// ===== 大阪旅行出發倒數 =====
+
+function updateCountdown() {
+
+  // 設定出發日期：2027年1月7日
+  const targetDate = new Date(2027, 0, 7);
+
+  // 取得今天日期
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+
+  // 計算相差天數
+  const difference = targetDate - today;
+
+  const days = Math.ceil(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  // 顯示倒數
+  const display = document.getElementById("daysLeft");
+
+  if (days > 0) {
+    display.textContent = days;
+  } else if (days === 0) {
+    display.textContent = "今天出發！";
+  } else {
+    display.textContent = "旅程開始！";
+  }
+}
+
+// 網頁開啟時自動執行
+updateCountdown();
 
 </body>
 </html>
