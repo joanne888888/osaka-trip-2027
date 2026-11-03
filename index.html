@@ -472,6 +472,64 @@
   font-size: 18px;
   font-weight: bold;
 }
+    
+/* ===== 手機版 DAY 1 行程排版優化 ===== */
+@media (max-width: 600px) {
+
+  /* 每個行程改成上下排列 */
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 22px 0;
+    flex-wrap: nowrap;
+  }
+
+  /* 時間標籤放在最上方 */
+  .timeline-time {
+    align-self: flex-start;
+    font-size: 17px;
+    padding: 8px 15px;
+  }
+
+  /* 文字區域使用完整寬度 */
+  .timeline-content {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+
+  .timeline-content h3 {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+  }
+
+  .timeline-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+
+  /* 地圖連結不要被擠得太窄 */
+  .map-link {
+    font-size: 15px;
+    padding: 9px 14px;
+  }
+
+  /* 插圖放大並置中 */
+  .timeline-illustration {
+    width: 160px;
+    height: 140px;
+    align-self: center;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+}
+
   </style>
 </head>
 
