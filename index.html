@@ -11,6 +11,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
 
+/* ===== 頂端固定導覽列 ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #FFFCF6;
+  border: 3px solid #3E3A39;
+  border-radius: 22px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #3E3A39;
+  font-size: 16px;
+  padding: 9px 13px;
+  border-radius: 18px;
+  transition: background-color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #F2A497;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+    gap: 2px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    padding: 8px 7px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+}
+
   <style>
     /* 網站基本設定 */
     :root {
@@ -69,9 +133,24 @@
   </style>
 </head>
 
+
 <body>
 
-  <main class="container">
+  <!-- 頂端導覽列 -->
+  <nav class="navbar">
+    <div class="logo">✈️ 來企大阪玩</div>
+
+    <div class="nav-links">
+      <a href="#top" class="active">首頁</a>
+      <a href="#itinerary">行程</a>
+      <a href="#todo">待辦</a>
+      <a href="#hotel">住宿</a>
+      <a href="#flight">航班</a>
+    </div>
+  </nav>
+
+  <main class="container" id="top">
+
 
     <section class="hero">
       <h1>✈️ 來企大阪玩！</h1>
