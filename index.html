@@ -530,7 +530,31 @@
 
 }
 
-  </style>
+  
+/* ===== 每日行程分頁切換 ===== */
+.day-picker{margin:28px 0 18px;padding:18px;background:#FFF8E9;border:3px solid var(--ink);border-radius:26px}
+.day-picker-title{margin:0 0 13px;font-size:22px}
+.day-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.day-tab{min-width:0;padding:11px 6px;border:2px solid var(--ink);border-radius:16px;background:#fff;color:var(--ink);font:inherit;cursor:pointer;transition:background-color .2s,transform .2s}
+.day-tab:hover{background:#FFF1D5;transform:translateY(-2px)}
+.day-tab.active{background:var(--coral);font-weight:bold}
+.day-tab span,.day-tab small{display:block}
+.day-tab span{font-size:17px}
+.day-tab small{margin-top:3px;font-size:12px}
+.itinerary-section{display:none}
+.itinerary-section.active{display:block}
+.day-empty{padding:38px 18px;text-align:center;background:#fff;border:3px dashed var(--ink);border-radius:24px}
+.day-empty .empty-icon{font-size:42px;margin-bottom:10px}
+.day-empty h3{margin:0 0 8px;font-size:23px}
+.day-empty p{margin:0;line-height:1.7}
+@media(max-width:600px){
+ .day-picker{padding:13px 10px}
+ .day-tabs{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+ .day-tab{flex:0 0 86px;padding:10px 5px}
+ .day-tab span{font-size:16px}
+}
+
+</style>
 </head>
 
 
@@ -752,8 +776,22 @@
 
 
 
+
+<!-- ===== 每日行程天數切換 ===== -->
+<section class="day-picker" id="itinerary">
+  <h2 class="day-picker-title">🗓️ 選擇想查看的日期</h2>
+  <div class="day-tabs" role="tablist" aria-label="每日行程">
+    <button class="day-tab active" type="button" role="tab" aria-selected="true" data-day="day1"><span>DAY 1</span><small>01/07・抵達大阪</small></button>
+    <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="day2"><span>DAY 2</span><small>01/08・環球影城</small></button>
+    <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="day3"><span>DAY 3</span><small>01/09・勝尾寺</small></button>
+    <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="day4"><span>DAY 4</span><small>01/10・京都</small></button>
+    <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="day5"><span>DAY 5</span><small>01/11・奈良</small></button>
+    <button class="day-tab" type="button" role="tab" aria-selected="false" data-day="day6"><span>DAY 6</span><small>01/12・待安排</small></button>
+  </div>
+</section>
+
 <!-- ===== DAY 1 大阪行程 ===== -->
-<section class="itinerary-section" id="day1">
+<section class="itinerary-section active" id="day1">
 
   <div class="day-heading">
     <span class="day-badge">DAY 1</span>
@@ -1342,6 +1380,24 @@
 <!-- ===== DAY 5 奈良行程結束 ===== -->
 
     
+
+<!-- ===== DAY 6 行程暫留空白 ===== -->
+<section class="itinerary-section" id="day6">
+  <div class="day-heading">
+    <span class="day-badge">DAY 6</span>
+    <div>
+      <h2>回程日・行程待安排</h2>
+      <p>01/12（二）｜大阪 → 關西國際機場</p>
+    </div>
+  </div>
+  <div class="day-empty">
+    <div class="empty-icon">✈️</div>
+    <h3>DAY 6 行程規劃中</h3>
+    <p>這一天先保留空白，等行程確定後再補上內容。<br>回程班機：19:00 關西國際機場 T1 出發。</p>
+  </div>
+</section>
+<!-- ===== DAY 6 暫留空白結束 ===== -->
+
 </main>
 
 <script>
@@ -1370,7 +1426,27 @@ function updateCountdown() {
   }
 }
 
+
 updateCountdown();
+
+// ===== 每日行程分頁切換 =====
+const dayTabs = document.querySelectorAll(".day-tab");
+const daySections = document.querySelectorAll(".itinerary-section");
+
+dayTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const selectedDay = tab.dataset.day;
+    dayTabs.forEach((item) => {
+      const selected = item === tab;
+      item.classList.toggle("active", selected);
+      item.setAttribute("aria-selected", selected ? "true" : "false");
+    });
+    daySections.forEach((section) => {
+      section.classList.toggle("active", section.id === selectedDay);
+    });
+  });
+});
+
 </script>
 
 </body>
