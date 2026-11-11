@@ -776,6 +776,45 @@
   }
 }
 
+
+/* 已預約資訊卡 */
+.reservation-card {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #F7F8F4;
+  border: 1.5px solid #D8E2D1;
+  border-radius: 14px;
+  color: #3E3A39;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.reservation-card .reservation-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  font-weight: 700;
+  color: #55734D;
+}
+.reservation-card .reservation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 14px;
+}
+.reservation-card .reservation-field span {
+  display: block;
+  color: #817A73;
+  font-size: 11px;
+}
+.reservation-card .reservation-field strong {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+@media (max-width: 420px) {
+  .reservation-card { padding: 11px; }
+  .reservation-card .reservation-grid { grid-template-columns: 1fr 1fr; gap: 7px 9px; }
+}
+
 </style>
 </head>
 
@@ -1091,6 +1130,15 @@
         <h3>やさい串巻き なるとや Ao 🍢</h3>
         <p>享用日式創意蔬菜串燒，品嚐大阪美食。</p>
         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=やさい串巻きなるとやAo" target="_blank">📍 なるとや Ao</a>
+        <div class="reservation-card">
+          <div class="reservation-title">✓ 已完成座位預約</div>
+          <div class="reservation-grid">
+            <div class="reservation-field"><span>預約日期</span><strong>2027/01/07（四）</strong></div>
+            <div class="reservation-field"><span>預約時間</span><strong>19:00</strong></div>
+            <div class="reservation-field"><span>人數</span><strong>2 人</strong></div>
+          </div>
+          <div style="margin-top:8px;color:#817A73;font-size:11px;">現場請出示 Klook 憑證</div>
+        </div>
       </div>
       <img class="timeline-illustration" src="images/day1/07_vegetable_skewers.png" alt="蔬菜串燒">
     </div>
@@ -1171,12 +1219,20 @@
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-time">18:30–19:45</div>
+      <div class="timeline-time">18:45–20:00</div>
       <div class="timeline-content">
         <h3>すき焼き 藤もと 🍲</h3>
-        <p>享用人氣壽喜燒，品嚐關西風的香甜美味。建議預留約 75 分鐘用餐。</p>
+        <p>享用人氣壽喜燒，品嚐關西風的香甜美味。已預約 18:45，預留約 75 分鐘用餐。</p>
         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=すき焼き藤もと大阪" target="_blank">📍 すき焼き 藤もと</a>
-        <a class="map-link" href="https://www.tablecheck.com/ja/shops/sukiyaki-fujimoto/reserve" target="_blank">📅 餐廳預約</a>
+        <div class="reservation-card">
+          <div class="reservation-title">✓ 已完成座位預約</div>
+          <div class="reservation-grid">
+            <div class="reservation-field"><span>預約日期</span><strong>2027/01/08（五）</strong></div>
+            <div class="reservation-field"><span>預約時間</span><strong>18:45</strong></div>
+            <div class="reservation-field"><span>人數</span><strong>2 人</strong></div>
+          </div>
+          <div style="margin-top:8px;color:#817A73;font-size:11px;">現場請出示 Klook 憑證</div>
+        </div>
       </div>
       <img class="timeline-illustration" src="images/day2/04_sukiyaki.png" alt="壽喜燒">
     </div>
