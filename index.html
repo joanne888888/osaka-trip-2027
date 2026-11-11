@@ -815,6 +815,128 @@
   .reservation-card .reservation-grid { grid-template-columns: 1fr 1fr; gap: 7px 9px; }
 }
 
+
+/* ===== 待辦清單與住宿資訊 ===== */
+.info-section {
+  margin: 30px auto;
+  padding: clamp(18px, 3vw, 28px);
+  background: #FFFFFF;
+  border: 3px solid var(--ink);
+  border-radius: 26px;
+  box-shadow: 0 5px 0 rgba(62,58,57,.045);
+  scroll-margin-top: 105px;
+}
+.info-section h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 3vw, 28px);
+}
+.info-intro {
+  margin: 0 0 18px;
+  color: #756D68;
+  line-height: 1.65;
+}
+.todo-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0 16px;
+  padding: 12px 15px;
+  background: #FFF8E9;
+  border: 1.5px solid #E9DCCB;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.todo-progress-track {
+  height: 9px;
+  margin-top: 8px;
+  overflow: hidden;
+  background: #EFE7DC;
+  border-radius: 99px;
+}
+.todo-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #B9DAA5;
+  border-radius: 99px;
+  transition: width .2s ease;
+}
+.todo-group {
+  margin-top: 18px;
+}
+.todo-group h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+.todo-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 13px;
+  background: #FFFCF6;
+  border: 1.5px solid #E9DCCB;
+  border-radius: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.todo-item input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  flex: 0 0 auto;
+  accent-color: #8EAE7E;
+}
+.todo-item:has(input:checked) {
+  background: #F3F7EF;
+  color: #77736D;
+}
+.todo-item:has(input:checked) span {
+  text-decoration: line-through;
+}
+.hotel-card {
+  padding: 18px;
+  background: #FFF8E9;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+}
+.hotel-name {
+  margin: 0 0 8px;
+  font-size: 23px;
+  font-weight: bold;
+}
+.hotel-note {
+  margin: 0 0 14px;
+  color: #756D68;
+  line-height: 1.65;
+}
+.hotel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.hotel-actions a {
+  display: inline-block;
+  padding: 9px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--ink);
+  text-decoration: none;
+}
+.hotel-actions a:hover {
+  background: #F6D27A;
+}
+@media(max-width:600px) {
+  .info-section { margin: 20px auto; border-radius: 22px; }
+  .todo-list { grid-template-columns: 1fr; }
+  .todo-progress { align-items: flex-start; flex-direction: column; }
+}
+
 </style>
 </head>
 
@@ -1676,6 +1798,65 @@
 </section>
 <!-- ===== DAY 6 暫留空白結束 ===== -->
 
+
+<!-- ===== 旅行待辦清單 ===== -->
+<section class="info-section" id="todo">
+  <h2>🧳 大阪旅行待辦清單</h2>
+  <p class="info-intro">出發前慢慢準備，完成一項就勾選一項。勾選狀態會保存在目前使用的瀏覽器中。</p>
+
+  <div class="todo-progress">
+    <div>
+      <span>準備進度</span>
+      <div class="todo-progress-track"><div class="todo-progress-fill" id="todoProgressFill"></div></div>
+    </div>
+    <span id="todoProgressText">0 / 12 已完成</span>
+  </div>
+
+  <div class="todo-group">
+    <h3>📌 重要文件與預訂</h3>
+    <div class="todo-list">
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認護照效期及攜帶護照</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認來回機票及航班資訊</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認 HOTEL THE LEBEN OSAKA 訂房資料</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>整理餐廳預約憑證及電子票券</span></label>
+    </div>
+  </div>
+
+  <div class="todo-group">
+    <h3>📱 網路與交通</h3>
+    <div class="todo-list">
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>準備網卡／eSIM／漫遊</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認機場往返飯店交通方式</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認日本交通 IC 卡及支付方式</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>下載離線地圖及必要 App</span></label>
+    </div>
+  </div>
+
+  <div class="todo-group">
+    <h3>🧥 行李與出發準備</h3>
+    <div class="todo-list">
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>準備冬季保暖衣物及舒適鞋子</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>準備常用藥品及個人用品</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>確認行李箱、充電器及行動電源</span></label>
+      <label class="todo-item"><input type="checkbox" class="trip-todo"><span>出發前確認天氣及行李重量</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 住宿資訊 ===== -->
+<section class="info-section" id="hotel">
+  <h2>🏨 住宿資訊</h2>
+  <p class="info-intro">六天五夜的大阪住宿據點</p>
+  <div class="hotel-card">
+    <p class="hotel-name">HOTEL THE LEBEN OSAKA</p>
+    <p class="hotel-note">大阪雷本酒店｜1/7～1/12，住宿五晚。<br>入住／退房時間及訂房確認資料請以你的訂房憑證為準。</p>
+    <div class="hotel-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=HOTEL+THE+LEBEN+OSAKA" target="_blank" rel="noopener">📍 Google Maps 導航</a>
+      <a href="https://www.leben-hotels.jp/osaka/" target="_blank" rel="noopener">🌐 飯店官方網站</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -1724,6 +1905,37 @@ dayTabs.forEach((tab) => {
     });
   });
 });
+
+
+// ===== 待辦清單勾選與進度保存 =====
+(() => {
+  const items = Array.from(document.querySelectorAll(".trip-todo"));
+  const fill = document.getElementById("todoProgressFill");
+  const text = document.getElementById("todoProgressText");
+  const storageKey = "osaka-trip-2027-todos";
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    items.forEach((item, index) => { item.checked = saved.includes(index); });
+  } catch (error) {
+    // 若瀏覽器不允許儲存，仍可在目前頁面勾選。
+  }
+
+  function updateTodoProgress() {
+    const done = items.filter(item => item.checked).length;
+    const percent = items.length ? (done / items.length) * 100 : 0;
+    fill.style.width = percent + "%";
+    text.textContent = `${done} / ${items.length} 已完成`;
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(
+        items.map((item, index) => item.checked ? index : null).filter(index => index !== null)
+      ));
+    } catch (error) {}
+  }
+
+  items.forEach(item => item.addEventListener("change", updateTodoProgress));
+  updateTodoProgress();
+})();
 
 </script>
 
